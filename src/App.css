@@ -161,7 +161,7 @@ input:focus {
   margin-right: 0px;
 }
 
-.compndeltodos{
+.compndeltodos {
   width: 350px;
   display: flex;
   flex-direction: column;
@@ -175,7 +175,7 @@ input:focus {
   padding-right: 10px;
 }
 
-.compndeltodoss::-webkit-scrollbar{
+.compndeltodoss::-webkit-scrollbar {
   width: 10px;
   background-color: rgba(255, 255, 255, 0.644);
   border-radius: 100px;
@@ -205,7 +205,7 @@ input:focus {
 .func_button {
   background-color: #379683;
   border: 0;
-  margin-right: 10px;
+  margin-right: 15px;
   padding: 4px 7px;
   border-radius: 10px;
   cursor: pointer;
@@ -254,7 +254,8 @@ input:focus {
   .todoss {
     max-height: 200px;
   }
-  .completedtodos, .deletedtodos {
+  .completedtodos,
+  .deletedtodos {
     max-width: 260px;
   }
 }
@@ -269,4 +270,26 @@ input:focus {
   .title {
     text-align: center;
   }
+}
+
+[data-tooltip] {
+  position: relative; /* Относительное позиционирование */
+}
+[data-tooltip]::after {
+  content: attr(data-tooltip); /* Выводим текст */
+  position: absolute; /* Абсолютное позиционирование */
+  width: 100px; /* Ширина подсказки */
+  left: -110%;
+  top: 0; /* Положение подсказки */
+  background: #3989c9; /* Синий цвет фона */
+  color: #fff; /* Цвет текста */
+  padding: 0.5em; /* Поля вокруг текста */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Параметры тени */
+  pointer-events: none; /* Подсказка */
+  opacity: 0; /* Подсказка невидима */
+  transition: 0.5s; /* Время появления подсказки */
+}
+[data-tooltip]:hover::after {
+  opacity: 1; /* Показываем подсказку */
+  top: 2em; /* Положение подсказки */
 }

@@ -213,13 +213,13 @@ const TodoWrapper = () => {
         </div> */}
         </div>
         <div className="footer">
-          <button className="func_button" onClick={showCompletedTodosFunc}>
+          <button className="func_button" onClick={showCompletedTodosFunc} data-tooltip="Go to completed tasks">
             {showCompletedTodos === true ? <img src={back} className="img" alt='img' /> : <img src={check} className='img' alt='img' />}
           </button>
-          <button className="func_button" onClick={showDeletedTodosFunc}>
+          <button className="func_button" onClick={showDeletedTodosFunc} data-tooltip="Go to deleted tasks">
             {showDeletedTodos === true ? <img src={back} className="img" alt='img' /> : <img src={trash} className='img' alt='img' />}
           </button>
-          <button className='func_button' onClick={clearFunc}>
+          <button className='func_button' onClick={clearFunc} data-tooltip={`Clear this list`}>
             <img src={cancel} className='img' alt='img' />
           </button>
         </div>
