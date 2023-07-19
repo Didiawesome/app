@@ -1,11 +1,10 @@
-import logo from './logo.svg'
 import './App.css'
 import { useState } from 'react'
 import TodoWrapper from './components/TodoWrapper'
 
 function App() {
   return (
-    <div className='App'>
+    <div className="App">
       <TodoWrapper />
     </div>
   )
