@@ -18,8 +18,8 @@ const TodoWrapper = () => {
   const [deletedTodos, setDeletedTodos] = useState([])
   const [showCompletedTodos, setShowCompletedTodos] = useState(false)
   const [showDeletedTodos, setShowDeletedTodos] = useState(false)
-  const ooo = completedTodos.length
-  const [counter, setCounter] = useState(ooo)
+  const compTodosLength = completedTodos.length
+  const [counter, setCounter] = useState(compTodosLength)
 
   // const ofnik = JSON.parse(localStorage.getItem('todos')) || todos
 
