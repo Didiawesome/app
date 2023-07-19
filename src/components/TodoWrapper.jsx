@@ -18,10 +18,8 @@ const TodoWrapper = () => {
   const [deletedTodos, setDeletedTodos] = useState([])
   const [showCompletedTodos, setShowCompletedTodos] = useState(false)
   const [showDeletedTodos, setShowDeletedTodos] = useState(false)
-  const compTodosLength = completedTodos.length
+  const compTodosLength = todos.map(todo => todo.completed === true).length
   const [counter, setCounter] = useState(compTodosLength)
-
-  // const ofnik = JSON.parse(localStorage.getItem('todos')) || todos
 
   const clearFunc = () => {
     if (showCompletedTodos === true) {
@@ -53,7 +51,6 @@ const TodoWrapper = () => {
       ...todos,
       { id: uuidv4(), task: todo, completed: false, isEditing: false },
     ])
-    // localStorage.setItem('todos', JSON.stringify([...todos, { id: uuidv4(), task: todo, completed: false, isEditing: false }]))
   }
 
   useEffect(() => {
@@ -92,10 +89,6 @@ const TodoWrapper = () => {
     }
   }, [todos])
 
-  // const saveTodos = () => {
-  //   localStorage.setItem('todos', JSON.stringify(todos))
-  // }
-
   const toggleComplete = (id) => {
     setTodos(
       todos.map((todo) =>
@@ -129,7 +122,19 @@ const TodoWrapper = () => {
       ...todos.filter((todo) => todo.id === id),
     ])
 
-    // setCounter(counter - 1)
+    localStorage.removeItem('todos')
+
+    console.log(deletedTodos)
+  }
+
+  const deleteCompedTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id))
+    setDeletedTodos([
+      ...deletedTodos,
+      ...todos.filter((todo) => todo.id === id),
+    ])
+
+    setCounter(counter - 1)
 
     localStorage.removeItem('todos')
 
@@ -201,7 +206,7 @@ const TodoWrapper = () => {
                     task={todo}
                     key={index}
                     toggleComplete={toggleCompleted}
-                    deleteTodo={deleteTodo}
+                    deleteTodo={deleteCompedTodo}
                   />
                 ) : todo.isEditing ? (
                   <EditTodoForm editTodo={editTask} task={todo} key={index} />
@@ -217,15 +222,6 @@ const TodoWrapper = () => {
               )}
             </div>
           )}
-
-          {/* <div className='completedtodos'>
-          {completedTodos.map((todo) => <CompletedTodo task={todo} />)}
-        </div>
-        <div className="deletedtodos">
-          {deletedTodos.map((deletedTodo) => (
-            <DeletedTodo key={deletedTodo.id} task={deletedTodo} />
-          ))}
-        </div> */}
         </div>
         <div className="footer">
           <button
