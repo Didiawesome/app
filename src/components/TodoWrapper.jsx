@@ -145,7 +145,7 @@ const TodoWrapper = () => {
     <div className="wrapper">
       <div className="content">
         <div className="header">
-          {counter !== 0 ? counter == todos.length ? (
+          {counter !== 0 ? counter === todos.length ? (
             <h1 className="title">Good job!🎉👍</h1>
           ) : (
             <h1 className="title">
@@ -214,13 +214,13 @@ const TodoWrapper = () => {
         </div>
         <div className="footer">
           <button className="func_button" onClick={showCompletedTodosFunc}>
-            {showCompletedTodos === true ? <img src={back} className="img" /> : <img src={check} className='img' />}
+            {showCompletedTodos === true ? <img src={back} className="img" alt='img' /> : <img src={check} className='img' alt='img' />}
           </button>
           <button className="func_button" onClick={showDeletedTodosFunc}>
-            {showDeletedTodos === true ? <img src={back} className="img" /> : <img src={trash} className='img' />}
+            {showDeletedTodos === true ? <img src={back} className="img" alt='img' /> : <img src={trash} className='img' alt='img' />}
           </button>
           <button className='func_button' onClick={clearFunc}>
-            <img src={cancel} className='img' />
+            <img src={cancel} className='img' alt='img' />
           </button>
         </div>
       </div>
