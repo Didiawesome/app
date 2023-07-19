@@ -18,13 +18,14 @@ const TodoWrapper = () => {
   const [deletedTodos, setDeletedTodos] = useState([])
   const [showCompletedTodos, setShowCompletedTodos] = useState(false)
   const [showDeletedTodos, setShowDeletedTodos] = useState(false)
-  const [counter, setCounter] = useState(0)
+  const ooo = completedTodos.length
+  const [counter, setCounter] = useState(ooo)
 
   // const ofnik = JSON.parse(localStorage.getItem('todos')) || todos
 
   const clearFunc = () => {
     if (showCompletedTodos === true) {
-      todos.map((todo) => todo.completed = false)
+      todos.map((todo) => (todo.completed = false))
       setCompletedTodos([])
       localStorage.removeItem('completedTodos')
     } else if (showDeletedTodos === true) {
@@ -85,6 +86,12 @@ const TodoWrapper = () => {
     if (delTodosData !== null) setDeletedTodos(delTodosData)
   }, [])
 
+  useEffect(() => {
+    if (todos.length === 0) {
+      setCounter(0)
+    }
+  }, [todos])
+
   // const saveTodos = () => {
   //   localStorage.setItem('todos', JSON.stringify(todos))
   // }
@@ -122,6 +129,10 @@ const TodoWrapper = () => {
       ...todos.filter((todo) => todo.id === id),
     ])
 
+    // setCounter(counter - 1)
+
+    localStorage.removeItem('todos')
+
     console.log(deletedTodos)
   }
 
@@ -145,14 +156,18 @@ const TodoWrapper = () => {
     <div className="wrapper">
       <div className="content">
         <div className="header">
-          {counter !== 0 ? counter === todos.length ? (
-            <h1 className="title">Good job!🎉👍</h1>
+          {counter !== 0 ? (
+            counter === todos.length ? (
+              <h1 className="title">Good job!🎉👍</h1>
+            ) : (
+              <h1 className="title">
+                {counter > 0 ? 'Keep it going💪📈' : 'Do at least one🤏🙏'}
+              </h1>
+            )
           ) : (
-            <h1 className="title">
-              {counter > 0 ? 'Keep it going💪📈' : 'Do at least one🤏🙏'}
-            </h1>
-          ) : <h1 className='title'>Get Things Done!</h1>}
-          <p>
+            <h1 className="title">Get Things Done!</h1>
+          )}
+          <p className="counter">
             {counter}/{todos.length}
           </p>
           <TodoForm addTodo={addTodo} />
@@ -171,7 +186,7 @@ const TodoWrapper = () => {
           ) : showDeletedTodos ? (
             <div
               className={`${
-                completedTodos.length < 3 ? 'compndeltodos' : 'compndeltodoss'
+                deletedTodos.length < 5 ? 'compndeltodos' : 'compndeltodoss'
               }`}
             >
               {deletedTodos.map((deletedTodo) => (
@@ -213,14 +228,34 @@ const TodoWrapper = () => {
         </div> */}
         </div>
         <div className="footer">
-          <button className="func_button" onClick={showCompletedTodosFunc} data-tooltip="Go to completed tasks">
-            {showCompletedTodos === true ? <img src={back} className="img" alt='img' /> : <img src={check} className='img' alt='img' />}
+          <button
+            className="func_button"
+            onClick={showCompletedTodosFunc}
+            data-tooltip="Go to completed tasks"
+          >
+            {showCompletedTodos === true ? (
+              <img src={back} className="img" alt="img" />
+            ) : (
+              <img src={check} className="img" alt="img" />
+            )}
           </button>
-          <button className="func_button" onClick={showDeletedTodosFunc} data-tooltip="Go to deleted tasks">
-            {showDeletedTodos === true ? <img src={back} className="img" alt='img' /> : <img src={trash} className='img' alt='img' />}
+          <button
+            className="func_button"
+            onClick={showDeletedTodosFunc}
+            data-tooltip="Go to deleted tasks"
+          >
+            {showDeletedTodos === true ? (
+              <img src={back} className="img" alt="img" />
+            ) : (
+              <img src={trash} className="img" alt="img" />
+            )}
           </button>
-          <button className='func_button' onClick={clearFunc} data-tooltip={`Clear this list`}>
-            <img src={cancel} className='img' alt='img' />
+          <button
+            className="func_button"
+            onClick={clearFunc}
+            data-tooltip={`Clear this list`}
+          >
+            <img src={cancel} className="img" alt="img" />
           </button>
         </div>
       </div>

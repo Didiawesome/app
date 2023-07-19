@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import plus from '../img/plus.png'
 
 const TodoForm = ({ addTodo }) => {
   const [value, setValue] = useState('')
-  let placeholder = 'Add todo'
+  let placeholder = 'Add task'
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -26,7 +27,7 @@ const TodoForm = ({ addTodo }) => {
         onChange={(e) => setValue(e.target.value)}
       />
       <button type="submit" className="form__button">
-        +
+        <img src={plus} className='img' alt="img" />
       </button>
     </form>
   )

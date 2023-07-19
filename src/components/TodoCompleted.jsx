@@ -1,4 +1,5 @@
 import React from 'react'
+import trash from '../img/trash.png'
 
 const TodoCompleted = ({ task, toggleComplete, deleteTodo }) => {
   return (
@@ -13,7 +14,7 @@ const TodoCompleted = ({ task, toggleComplete, deleteTodo }) => {
       </div>
       <div>
         <button onClick={() => deleteTodo(task.id)} className="todo__button">
-          Delete
+          <img src={trash} className="img" alt="img" />
         </button>
       </div>
     </div>
