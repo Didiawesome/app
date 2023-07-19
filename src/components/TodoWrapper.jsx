@@ -95,7 +95,7 @@ const TodoWrapper = () => {
   }, [counter])
 
   useEffect(() => {
-    const counterData = localStorage.getItem('counter')
+    const counterData = localStorage.getItem('counter') || 0
     setCounter(counterData)
   }, [])
 
