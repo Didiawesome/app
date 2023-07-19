@@ -18,7 +18,7 @@ const TodoWrapper = () => {
   const [deletedTodos, setDeletedTodos] = useState([])
   const [showCompletedTodos, setShowCompletedTodos] = useState(false)
   const [showDeletedTodos, setShowDeletedTodos] = useState(false)
-  const compTodosLength = todos.map(todo => todo.completed === true).length
+  const compTodosLength = todos.map((todo) => todo.completed === true).length
   const [counter, setCounter] = useState(compTodosLength)
 
   const clearFunc = () => {
@@ -88,6 +88,16 @@ const TodoWrapper = () => {
       setCounter(0)
     }
   }, [todos])
+
+  useEffect(() => {
+    if (counter === 0) return
+    localStorage.setItem('counter', JSON.stringify(counter))
+  }, [counter])
+
+  useEffect(() => {
+    const counterData = localStorage.getItem('counter')
+    setCounter(counterData)
+  }, [])
 
   const toggleComplete = (id) => {
     setTodos(
