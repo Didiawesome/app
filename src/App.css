@@ -1,0 +1,272 @@
+.App {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+button:focus {
+  outline: none;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid cadetblue;
+  border-radius: 10px;
+  max-width: fit-content;
+  height: 460px;
+  margin: 0 auto;
+  background-color: #05386b;
+  padding: 25px 25px 25px 25px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main {
+  min-height: 240px;
+}
+
+.footer {
+  padding-top: 10px;
+  display: flex;
+}
+
+.title {
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.form {
+  max-width: fit-content;
+  display: flex;
+  background-color: #5cdb95;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.input,
+.edit_input {
+  padding: 15px;
+  border: 0px;
+  background-color: #5cdb95;
+  border-radius: 15px;
+  color: black;
+  width: 300px;
+  color: #edf5e1;
+}
+
+.input:hover,
+input:focus {
+  outline: none;
+}
+
+.input::placeholder {
+  color: black;
+  font-size: 16.5px;
+  color: #edf5e1;
+}
+
+.form__button {
+  padding: 5px;
+  border: 0;
+  border-radius: 16px;
+  width: 50px;
+  background-color: #379683;
+  color: #edf5e1;
+  cursor: pointer;
+}
+
+.form__button:hover,
+.form__button:focus {
+  cursor: pointer;
+}
+
+.todos {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todoss {
+  width: 350px;
+  max-height: 240px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.todoss {
+  max-width: 350px;
+}
+
+.todoss::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgba(255, 255, 255, 0.644);
+  border-radius: 100px;
+}
+
+.todoss::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 100px;
+  background-color: gray;
+  background-clip: content-box;
+  max-height: 10px;
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(15, 112, 116);
+  width: 100%;
+  border-radius: 15px;
+  padding: 15px 10px;
+  margin-bottom: 15px;
+}
+
+.todo:last-child {
+  margin-bottom: 0px;
+}
+
+.task {
+  cursor: pointer;
+  max-width: 200px;
+  overflow-x: auto;
+  scrollbar-width: 30px;
+}
+
+.todo__button {
+  background-color: cadetblue;
+  border: 0;
+  margin-right: 10px;
+  padding: 4px 7px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #edf5e1;
+}
+
+.todo__button:last-child {
+  margin-right: 0px;
+}
+
+.compndeltodos{
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.compndeltodoss {
+  width: 350px;
+  max-height: 240px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.compndeltodoss::-webkit-scrollbar{
+  width: 10px;
+  background-color: rgba(255, 255, 255, 0.644);
+  border-radius: 100px;
+}
+
+.compndeltodoss::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 100px;
+  background-color: gray;
+  background-clip: content-box;
+  max-height: 10px;
+}
+
+.compndeltodo {
+  text-align: center;
+  background-color: #8ee4af;
+  border-radius: 20px;
+  width: 100%;
+  padding: 12px 0;
+  margin-bottom: 10px;
+}
+
+.compndeltodo:last-child {
+  margin-bottom: 0px;
+}
+
+.func_button {
+  background-color: #379683;
+  border: 0;
+  margin-right: 10px;
+  padding: 4px 7px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #edf5e1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: fit-content;
+}
+
+.img {
+  width: 20px;
+  height: 20px;
+}
+
+.func_button:last-child {
+  margin-right: 0px;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+@media screen and (max-width: 450px) {
+  .wrapper {
+    padding: 0 15px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .content {
+    padding: 25px 15px 25px 15px;
+  }
+  .header,
+  .main,
+  .footer {
+    max-width: 260px;
+  }
+  .todos,
+  .todoss {
+    width: 260px;
+  }
+  .form {
+    max-width: 100%;
+  }
+  .todoss {
+    max-height: 200px;
+  }
+  .completedtodos, .deletedtodos {
+    max-width: 260px;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .wrapper {
+    padding: 0 10px;
+  }
+  .content {
+    max-width: 280px;
+  }
+  .title {
+    text-align: center;
+  }
+}
