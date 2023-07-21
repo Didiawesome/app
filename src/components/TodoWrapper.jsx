@@ -18,8 +18,7 @@ const TodoWrapper = () => {
   const [deletedTodos, setDeletedTodos] = useState([])
   const [showCompletedTodos, setShowCompletedTodos] = useState(false)
   const [showDeletedTodos, setShowDeletedTodos] = useState(false)
-  const compTodosLength = todos.map((todo) => todo.completed === true).length
-  const [counter, setCounter] = useState(compTodosLength)
+  const [counter, setCounter] = useState(0)
 
   const clearFunc = () => {
     if (showCompletedTodos === true) {
@@ -147,6 +146,7 @@ const TodoWrapper = () => {
     setCounter(counter - 1)
 
     localStorage.removeItem('todos')
+    localStorage.removeItem('counter')
 
     console.log(deletedTodos)
   }
