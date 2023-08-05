@@ -32,6 +32,7 @@ const TodoWrapper = () => {
       setTodos([])
       localStorage.removeItem('todos')
     }
+    localStorage.removeItem('counter')
     setCounter(0)
   }
 
@@ -175,9 +176,7 @@ const TodoWrapper = () => {
             counter === todos.length ? (
               <h1 className="title">Good job!🎉👍</h1>
             ) : (
-              <h1 className="title">
-                {counter > 0 ? 'Keep it going💪📈' : 'Do at least one🤏🙏'}
-              </h1>
+              <h1 className="title">Keep it going!📈</h1>
             )
           ) : (
             <h1 className="title">Get Things Done!</h1>
@@ -237,7 +236,9 @@ const TodoWrapper = () => {
           <button
             className="func_button"
             onClick={showCompletedTodosFunc}
-            data-tooltip="Go to completed tasks"
+            data-tooltip={
+              showCompletedTodos === true ? 'Go back' : 'Go to completed tasks'
+            }
           >
             {showCompletedTodos === true ? (
               <img src={back} className="img" alt="img" />
@@ -248,7 +249,9 @@ const TodoWrapper = () => {
           <button
             className="func_button"
             onClick={showDeletedTodosFunc}
-            data-tooltip="Go to deleted tasks"
+            data-tooltip={
+              showDeletedTodos === true ? 'Go back' : 'Go to deleted tasks'
+            }
           >
             {showDeletedTodos === true ? (
               <img src={back} className="img" alt="img" />
